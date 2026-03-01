@@ -1,6 +1,6 @@
 extends Node2D
 
-enum ItemType { AMMO, HEALTH, ARMOR, KEY, EMPTY }
+enum ItemType { AMMO, HEALTH, ARMOR, EMPTY }
 
 @export var item_type: ItemType = ItemType.AMMO
 @export var is_searched: bool = false
@@ -13,7 +13,6 @@ var item_colors = {
 	ItemType.AMMO: Color(0.8, 0.6, 0.2, 1),
 	ItemType.HEALTH: Color(0.2, 0.8, 0.2, 1),
 	ItemType.ARMOR: Color(0.3, 0.3, 0.8, 1),
-	ItemType.KEY: Color(0.9, 0.8, 0.1, 1),
 	ItemType.EMPTY: Color(0.3, 0.3, 0.3, 1)
 }
 
@@ -23,14 +22,12 @@ func _ready() -> void:
 
 func randomize_contents() -> void:
 	var rand = randf()
-	if rand < 0.35:
+	if rand < 0.40:
 		item_type = ItemType.AMMO
-	elif rand < 0.65:
+	elif rand < 0.70:
 		item_type = ItemType.HEALTH
-	elif rand < 0.80:
-		item_type = ItemType.ARMOR
 	elif rand < 0.90:
-		item_type = ItemType.KEY
+		item_type = ItemType.ARMOR
 	else:
 		item_type = ItemType.EMPTY
 
@@ -58,9 +55,6 @@ func search() -> void:
 			ItemType.ARMOR:
 				player.add_armor(25)
 				show_pickup_text("+25% Armor")
-			ItemType.KEY:
-				player.add_key()
-				show_pickup_text("+1 Key")
 			ItemType.EMPTY:
 				show_pickup_text("Empty")
 
