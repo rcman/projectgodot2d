@@ -70,6 +70,10 @@ func generate_sound(sound_name: String) -> AudioStreamWAV:
 			samples = make_beep(200, 250, 0.1, sample_hz, 0.3)
 		"enemy_shoot":
 			samples = make_noise(0.05, sample_hz, 0.35)
+		"locked":
+			samples = make_beep(150, 100, 0.15, sample_hz, 0.4)
+		"door_open":
+			samples = make_beep(200, 300, 0.2, sample_hz, 0.3)
 		_:
 			return null
 

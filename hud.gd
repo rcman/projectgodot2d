@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var armor_label: Label = $ArmorLabel
 @onready var key_label: Label = $KeyLabel
 @onready var score_label: Label = $ScoreLabel
+@onready var level_label: Label = $LevelLabel
 @onready var interaction_prompt: Label = $InteractionPrompt
 
 var player: Node2D = null
@@ -28,6 +29,7 @@ func _process(_delta: float) -> void:
 
 	if game_manager:
 		score_label.text = "Defeated: " + str(game_manager.enemies_defeated)
+		level_label.text = "Level " + str(game_manager.current_level)
 
 func show_interaction(text: String) -> void:
 	interaction_prompt.text = text

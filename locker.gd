@@ -6,7 +6,7 @@ enum ItemType { AMMO, HEALTH, ARMOR, KEY, EMPTY }
 @export var is_searched: bool = false
 
 @onready var sprite: ColorRect = $Sprite
-@onready var door: ColorRect = $Door
+@onready var door: Node2D = $Door
 @onready var interaction_area: Area2D = $InteractionArea
 
 var item_colors = {
@@ -18,7 +18,6 @@ var item_colors = {
 }
 
 func _ready() -> void:
-	# Randomize contents if not set
 	if not is_searched:
 		randomize_contents()
 
@@ -41,9 +40,10 @@ func search() -> void:
 
 	is_searched = true
 
-	# Open door animation
+	# Open door animation - swing open
 	var tween = create_tween()
-	tween.tween_property(door, "rotation_degrees", -90, 0.3)
+	tween.tween_property(door, "rotation_degrees", -120, 0.4).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(door, "position:x", -30, 0.4)
 
 	# Give item to player
 	var player = get_tree().get_first_node_in_group("player")
@@ -64,8 +64,27 @@ func search() -> void:
 			ItemType.EMPTY:
 				show_pickup_text("Empty")
 
-	# Update sprite color to show contents
-	sprite.color = item_colors[item_type]
+	# Show item inside locker
+	show_item_inside()
+
+func show_item_inside() -> void:
+	if item_type == ItemType.EMPTY:
+		return
+
+	var item_visual = ColorRect.new()
+	item_visual.offset_left = -10
+	item_visual.offset_top = -10
+	item_visual.offset_right = 10
+	item_visual.offset_bottom = 10
+	item_visual.color = item_colors[item_type]
+	sprite.add_child(item_visual)
+	item_visual.position = Vector2(25, 35)
+
+	# Fade out the item
+	var tween = create_tween()
+	tween.tween_interval(0.5)
+	tween.tween_property(item_visual, "modulate:a", 0, 0.5)
+	tween.tween_callback(item_visual.queue_free)
 
 func show_pickup_text(text: String) -> void:
 	var label = Label.new()

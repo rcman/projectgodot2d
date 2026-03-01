@@ -51,6 +51,16 @@ offset_right = 150.0
 offset_bottom = 175.0
 text = "Keys: 0"
 
+[node name="LevelLabel" type="Label" parent="."]
+offset_left = 900.0
+offset_top = 20.0
+offset_right = 1020.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(0.5, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "Level 1"
+horizontal_alignment = 1
+
 [node name="ScoreLabel" type="Label" parent="."]
 offset_left = 1700.0
 offset_top = 20.0

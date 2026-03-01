@@ -1,0 +1,181 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://enemy.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://platform.tscn" id="3_platform"]
+[ext_resource type="PackedScene" path="res://ladder.tscn" id="4_ladder"]
+[ext_resource type="PackedScene" path="res://locker.tscn" id="6_locker"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" path="res://factory_background.tscn" id="8_background"]
+[ext_resource type="PackedScene" path="res://sound_manager.tscn" id="9_sound"]
+[ext_resource type="PackedScene" path="res://game_manager.tscn" id="10_gamemanager"]
+[ext_resource type="PackedScene" path="res://boss.tscn" id="11_boss"]
+[ext_resource type="PackedScene" path="res://locked_door.tscn" id="12_door"]
+
+[node name="Map" type="Node2D"]
+
+[node name="FactoryBackground" parent="." instance=ExtResource("8_background")]
+
+[node name="SoundManager" parent="." instance=ExtResource("9_sound")]
+
+[node name="GameManager" parent="." instance=ExtResource("10_gamemanager")]
+
+[node name="HUD" parent="." groups=["hud"] instance=ExtResource("7_hud")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 1000)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy_0" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(500, 855)
+
+[node name="Enemy_1" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1400, 705)
+
+[node name="Enemy_2" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(800, 555)
+
+[node name="Enemy_3" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(400, 405)
+
+[node name="Boss_1" parent="Enemies" instance=ExtResource("11_boss")]
+position = Vector2(1000, 230)
+
+[node name="Lockers" type="Node2D" parent="."]
+
+[node name="Locker_1" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(280, 845)
+
+[node name="Locker_2" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(1000, 845)
+
+[node name="Locker_3" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(420, 695)
+
+[node name="Locker_4" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(1200, 695)
+
+[node name="Locker_5" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(250, 545)
+
+[node name="Locker_6" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(1000, 545)
+
+[node name="Locker_7" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(420, 395)
+
+[node name="Locker_8" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(800, 395)
+
+[node name="Locker_9" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(550, 245)
+
+[node name="Locker_10" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(1050, 245)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(960, 1064)
+platform_width = 1920.0
+one_way = false
+
+[node name="Platform_L1_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(200, 880)
+platform_width = 250.0
+
+[node name="Platform_L1_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(550, 880)
+platform_width = 200.0
+
+[node name="Platform_L1_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(950, 880)
+platform_width = 250.0
+
+[node name="Platform_L1_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1350, 880)
+platform_width = 200.0
+
+[node name="Platform_L1_5" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1700, 880)
+platform_width = 250.0
+
+[node name="Platform_L2_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(350, 730)
+platform_width = 300.0
+
+[node name="Platform_L2_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(750, 730)
+platform_width = 200.0
+
+[node name="Platform_L2_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1150, 730)
+platform_width = 250.0
+
+[node name="Platform_L2_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1550, 730)
+platform_width = 300.0
+
+[node name="Platform_L3_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(200, 580)
+platform_width = 200.0
+
+[node name="Platform_L3_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(550, 580)
+platform_width = 250.0
+
+[node name="Platform_L3_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(950, 580)
+platform_width = 200.0
+
+[node name="Platform_L3_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1400, 580)
+platform_width = 300.0
+
+[node name="Platform_L4_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(350, 430)
+platform_width = 250.0
+
+[node name="Platform_L4_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(750, 430)
+platform_width = 200.0
+
+[node name="Platform_L4_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1200, 430)
+platform_width = 300.0
+
+[node name="Platform_L5_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(500, 280)
+platform_width = 300.0
+
+[node name="Platform_L5_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1000, 280)
+platform_width = 250.0
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="Ladder_1" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(200, 670)
+ladder_height = 780.0
+
+[node name="Ladder_2" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(550, 670)
+ladder_height = 780.0
+
+[node name="Ladder_3" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(950, 670)
+ladder_height = 780.0
+
+[node name="Ladder_4" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(1350, 745)
+ladder_height = 630.0
+
+[node name="Ladder_5" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(750, 580)
+ladder_height = 300.0
+
+[node name="LockedDoors" type="Node2D" parent="."]
+
+[node name="Door_1" parent="LockedDoors" instance=ExtResource("12_door")]
+position = Vector2(850, 220)
