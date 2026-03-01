@@ -23,13 +23,13 @@ func _ready() -> void:
 
 func randomize_contents() -> void:
 	var rand = randf()
-	if rand < 0.3:
+	if rand < 0.35:
 		item_type = ItemType.AMMO
-	elif rand < 0.5:
-		item_type = ItemType.HEALTH
 	elif rand < 0.65:
+		item_type = ItemType.HEALTH
+	elif rand < 0.80:
 		item_type = ItemType.ARMOR
-	elif rand < 0.75:
+	elif rand < 0.90:
 		item_type = ItemType.KEY
 	else:
 		item_type = ItemType.EMPTY
@@ -50,14 +50,14 @@ func search() -> void:
 	if player:
 		match item_type:
 			ItemType.AMMO:
-				player.add_ammo(10)
-				show_pickup_text("+10 Ammo")
+				player.add_ammo(15)
+				show_pickup_text("+15 Ammo")
 			ItemType.HEALTH:
-				player.heal(2)
-				show_pickup_text("+2 Health")
+				player.heal(25)
+				show_pickup_text("+25 Health")
 			ItemType.ARMOR:
 				player.add_armor(25)
-				show_pickup_text("+25 Armor")
+				show_pickup_text("+25% Armor")
 			ItemType.KEY:
 				player.add_key()
 				show_pickup_text("+1 Key")

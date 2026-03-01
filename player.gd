@@ -3,17 +3,19 @@ extends CharacterBody2D
 @export var speed: float = 300.0
 @export var jump_velocity: float = -500.0
 @export var climb_speed: float = 200.0
-@export var max_health: int = 5
-@export var max_ammo: int = 30
+@export var max_health: int = 100
+@export var max_ammo: int = 50
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_on_ladder: bool = false
 var ladders_overlapping: int = 0
 var can_shoot: bool = true
+var facing_direction: float = 1.0  # 1 = right, -1 = left
 var shoot_cooldown: float = 0.3
 var health: int
-var ammo: int = 30
-var armor: int = 0
+var ammo: int = 10  # Start with low ammo - search lockers for more!
+var armor_percent: int = 0  # 0-100, fills up to level up
+var armor_level: int = 0    # Each level reduces damage more
 var keys: int = 0
 var is_invincible: bool = false
 var invincibility_time: float = 1.0
@@ -37,6 +39,10 @@ func _ready() -> void:
 
 	interaction_area.area_entered.connect(_on_interaction_entered)
 	interaction_area.area_exited.connect(_on_interaction_exited)
+
+	# Load armor from LevelManager (persists between levels)
+	armor_level = LevelManager.saved_armor_level
+	armor_percent = LevelManager.saved_armor_percent
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -70,6 +76,11 @@ func _physics_process(delta: float) -> void:
 			var h_input = Input.get_axis("move_left", "move_right")
 			velocity.x = h_input * speed * 0.3
 
+			# Update facing direction on ladder
+			if h_input != 0:
+				facing_direction = sign(h_input)
+				sprite.scale.x = facing_direction
+
 			if Input.is_action_just_pressed("jump"):
 				is_on_ladder = false
 				velocity.y = jump_velocity * 0.7
@@ -84,7 +95,8 @@ func _physics_process(delta: float) -> void:
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction:
 			velocity.x = direction * speed
-			sprite.scale.x = sign(direction)
+			facing_direction = sign(direction)
+			sprite.scale.x = facing_direction
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed * 0.2)
 
@@ -97,6 +109,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# Keep player within level boundaries
+	position.x = clamp(position.x, 20, 1900)
+
+	# Death if falling off bottom of level
+	if position.y > 1200:
+		die()
+
 func shoot() -> void:
 	can_shoot = false
 	ammo -= 1
@@ -104,8 +123,8 @@ func shoot() -> void:
 	play_sound("shoot")
 
 	var bullet = preload("res://bullet.tscn").instantiate()
-	bullet.position = global_position + Vector2(sprite.scale.x * 20, 0)
-	bullet.direction = Vector2(sprite.scale.x, 0)
+	bullet.position = global_position + Vector2(facing_direction * 20, 0)
+	bullet.direction = Vector2(facing_direction, 0)
 	bullet.is_player_bullet = true
 	get_tree().current_scene.add_child(bullet)
 
@@ -143,13 +162,13 @@ func take_damage(amount: int) -> void:
 
 	play_sound("hurt")
 
-	if armor > 0:
-		var armor_damage = min(armor, amount)
-		armor -= armor_damage
-		amount -= armor_damage
+	# Armor level reduces damage (each level = 20% reduction, max 80% at level 4+)
+	if armor_level > 0:
+		var reduction = min(armor_level * 0.20, 0.80)  # Cap at 80% reduction
+		amount = int(amount * (1.0 - reduction))
+		amount = max(amount, 1)  # Always take at least 1 damage
 
-	if amount > 0:
-		health -= amount
+	health -= amount
 
 	is_invincible = true
 	flash_damage()
@@ -195,7 +214,18 @@ func add_ammo(amount: int) -> void:
 	play_sound("pickup")
 
 func add_armor(amount: int) -> void:
-	armor = min(armor + amount, 100)
+	armor_percent += amount
+	if armor_percent >= 100:
+		armor_percent -= 100
+		armor_level += 1
+		# Show level up message
+		var hud = get_tree().get_first_node_in_group("hud")
+		if hud:
+			hud.show_message("Armor Level Up! Level " + str(armor_level))
+
+	# Save to LevelManager (persists between levels)
+	LevelManager.saved_armor_level = armor_level
+	LevelManager.saved_armor_percent = armor_percent
 	play_sound("pickup")
 
 func add_key() -> void:

@@ -1,8 +1,12 @@
 extends Node
 
 var current_level: int = 1
-var total_levels: int = 3
+var total_levels: int = 6
 var enemies_remaining: int = 0
+
+# Persistent player stats across levels
+var saved_armor_level: int = 0
+var saved_armor_percent: int = 0
 
 signal level_complete
 signal all_levels_complete
@@ -37,3 +41,5 @@ func restart_level() -> void:
 
 func reset_game() -> void:
 	current_level = 1
+	saved_armor_level = 0
+	saved_armor_percent = 0

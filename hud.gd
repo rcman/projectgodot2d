@@ -1,7 +1,8 @@
 extends CanvasLayer
 
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: ColorRect = $HealthBar
 @onready var health_label: Label = $HealthBar/Label
+const HEALTH_BAR_MAX_WIDTH: float = 200.0
 @onready var ammo_label: Label = $AmmoLabel
 @onready var armor_label: Label = $ArmorLabel
 @onready var key_label: Label = $KeyLabel
@@ -20,11 +21,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if player:
-		health_bar.value = player.health
-		health_bar.max_value = player.max_health
+		var health_percent = float(player.health) / float(player.max_health)
+		health_bar.size.x = HEALTH_BAR_MAX_WIDTH * health_percent
 		health_label.text = str(player.health) + "/" + str(player.max_health)
 		ammo_label.text = "Ammo: " + str(player.ammo)
-		armor_label.text = "Armor: " + str(player.armor)
+		armor_label.text = "Armor Lv" + str(player.armor_level) + " (" + str(player.armor_percent) + "%)"
 		key_label.text = "Keys: " + str(player.keys)
 
 	if game_manager:

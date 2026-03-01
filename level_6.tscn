@@ -1,0 +1,405 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://enemy.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://platform.tscn" id="3_platform"]
+[ext_resource type="PackedScene" path="res://ladder.tscn" id="4_ladder"]
+[ext_resource type="PackedScene" path="res://locker.tscn" id="6_locker"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" path="res://factory_background.tscn" id="8_background"]
+[ext_resource type="PackedScene" path="res://sound_manager.tscn" id="9_sound"]
+[ext_resource type="PackedScene" path="res://game_manager.tscn" id="10_gamemanager"]
+[ext_resource type="PackedScene" path="res://boss.tscn" id="11_boss"]
+[ext_resource type="PackedScene" path="res://exit_door.tscn" id="13_exit"]
+
+[node name="Map" type="Node2D"]
+
+[node name="FactoryBackground" parent="." instance=ExtResource("8_background")]
+
+[node name="SoundManager" parent="." instance=ExtResource("9_sound")]
+
+[node name="GameManager" parent="." instance=ExtResource("10_gamemanager")]
+
+[node name="HUD" parent="." groups=["hud"] instance=ExtResource("7_hud")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 1000)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy_0" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(250, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_1" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(420, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_2" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(590, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_3" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(760, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_4" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(930, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_5" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1100, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_6" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1270, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_7" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1440, 855)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_8" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(320, 705)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_9" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(550, 705)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_10" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(780, 705)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_11" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1010, 705)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_12" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(1240, 705)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_13" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(280, 555)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_14" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(550, 555)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_15" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(820, 555)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_16" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(400, 405)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Enemy_17" parent="Enemies" instance=ExtResource("2_enemy")]
+position = Vector2(700, 405)
+speed = 160.0
+chase_speed = 220.0
+detection_range = 450.0
+shoot_range = 350.0
+shoot_cooldown = 0.8
+health = 6
+damage = 2
+
+[node name="Boss_1" parent="Enemies" instance=ExtResource("11_boss")]
+position = Vector2(350, 230)
+max_health = 30
+chase_speed = 120.0
+shoot_cooldown = 0.5
+damage = 3
+
+[node name="Boss_2" parent="Enemies" instance=ExtResource("11_boss")]
+position = Vector2(650, 230)
+max_health = 30
+chase_speed = 120.0
+shoot_cooldown = 0.5
+damage = 3
+
+[node name="Boss_3" parent="Enemies" instance=ExtResource("11_boss")]
+position = Vector2(950, 230)
+max_health = 30
+chase_speed = 120.0
+shoot_cooldown = 0.5
+damage = 3
+
+[node name="Lockers" type="Node2D" parent="."]
+
+[node name="Locker_1" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(150, 845)
+
+[node name="Locker_2" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(320, 845)
+
+[node name="Locker_3" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(490, 845)
+
+[node name="Locker_4" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(660, 845)
+
+[node name="Locker_5" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(830, 845)
+
+[node name="Locker_6" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(250, 695)
+
+[node name="Locker_7" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(480, 695)
+
+[node name="Locker_8" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(710, 695)
+
+[node name="Locker_9" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(940, 695)
+
+[node name="Locker_10" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(300, 545)
+
+[node name="Locker_11" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(600, 545)
+
+[node name="Locker_12" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(450, 395)
+
+[node name="Locker_13" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(550, 245)
+
+[node name="Locker_14" parent="Lockers" instance=ExtResource("6_locker")]
+position = Vector2(850, 245)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Ground" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(960, 1064)
+platform_width = 1920.0
+one_way = false
+
+[node name="Platform_L1_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(150, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(350, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(550, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(750, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_5" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(950, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_6" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1150, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_7" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1350, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_8" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1550, 880)
+platform_width = 160.0
+
+[node name="Platform_L1_9" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1750, 880)
+platform_width = 160.0
+
+[node name="Platform_L2_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(250, 730)
+platform_width = 200.0
+
+[node name="Platform_L2_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(500, 730)
+platform_width = 180.0
+
+[node name="Platform_L2_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(750, 730)
+platform_width = 200.0
+
+[node name="Platform_L2_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1000, 730)
+platform_width = 180.0
+
+[node name="Platform_L2_5" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1250, 730)
+platform_width = 200.0
+
+[node name="Platform_L3_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(180, 580)
+platform_width = 160.0
+
+[node name="Platform_L3_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(420, 580)
+platform_width = 180.0
+
+[node name="Platform_L3_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(660, 580)
+platform_width = 200.0
+
+[node name="Platform_L3_4" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(920, 580)
+platform_width = 160.0
+
+[node name="Platform_L4_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(320, 430)
+platform_width = 200.0
+
+[node name="Platform_L4_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(600, 430)
+platform_width = 180.0
+
+[node name="Platform_L4_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(880, 430)
+platform_width = 200.0
+
+[node name="Platform_L5_1" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(400, 280)
+platform_width = 180.0
+
+[node name="Platform_L5_2" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(700, 280)
+platform_width = 200.0
+
+[node name="Platform_L5_3" parent="Platforms" instance=ExtResource("3_platform")]
+position = Vector2(1000, 280)
+platform_width = 180.0
+
+[node name="Ladders" type="Node2D" parent="."]
+
+[node name="Ladder_1" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(150, 670)
+ladder_height = 780.0
+
+[node name="Ladder_2" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(420, 670)
+ladder_height = 780.0
+
+[node name="Ladder_3" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(700, 670)
+ladder_height = 780.0
+
+[node name="Ladder_4" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(980, 730)
+ladder_height = 660.0
+
+[node name="Ladder_5" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(550, 500)
+ladder_height = 360.0
+
+[node name="Ladder_6" parent="Ladders" instance=ExtResource("4_ladder")]
+position = Vector2(850, 500)
+ladder_height = 360.0
+
+[node name="ExitDoor" parent="." instance=ExtResource("13_exit")]
+position = Vector2(1150, 220)

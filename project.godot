@@ -14,6 +14,10 @@ config/name="2D Platformer"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
+[autoload]
+
+LevelManager="*res://level_manager.gd"
+
 [input]
 
 move_left={

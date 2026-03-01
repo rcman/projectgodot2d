@@ -74,10 +74,9 @@ func exit_level() -> void:
 	await tween.finished
 	collision_shape.set_deferred("disabled", true)
 
-	# Trigger level complete
-	var game_manager = get_tree().get_first_node_in_group("game_manager")
-	if game_manager:
-		game_manager.level_complete()
+	# Trigger level complete - wait a moment then change scene
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://level_complete.tscn")
 
 func update_display() -> void:
 	if is_locked:

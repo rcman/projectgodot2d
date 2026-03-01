@@ -26,7 +26,7 @@ func animate_entrance() -> void:
 	tween.tween_property(self, "modulate:a", 1.0, 0.5)
 
 func _on_restart_pressed() -> void:
-	get_tree().change_scene_to_file("res://generated_map.tscn")
+	LevelManager.restart_level()
 
 func _on_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")

@@ -4,7 +4,7 @@ var score: int = 0
 var enemies_defeated: int = 0
 var total_enemies: int = 0
 var current_level: int = 1
-var total_levels: int = 3
+var total_levels: int = 6
 
 func _ready() -> void:
 	add_to_group("game_manager")

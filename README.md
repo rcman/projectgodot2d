@@ -4,7 +4,7 @@ A 2D platformer game built with Godot 4.x featuring procedurally generated level
 
 ## Features
 
-- **Multiple Levels**: 3 levels with increasing difficulty
+- **Multiple Levels**: 6 levels with increasing difficulty
 - **Player Mechanics**: Run, jump, climb ladders, shoot
 - **Enemies**: Patrol AI that chases and shoots when player is nearby
 - **Boss Fights**: Large boss enemies with spread shot attacks and enrage mode
@@ -32,7 +32,7 @@ A 2D platformer game built with Godot 4.x featuring procedurally generated level
 3. Search lockers for supplies (ammo, health, armor)
 4. Defeat the boss to get a key
 5. Use the key to unlock the exit door
-6. Progress through all 3 levels to win
+6. Progress through all 6 levels to win
 
 ## Project Structure
 
@@ -61,19 +61,30 @@ projectgodot2d/
 └── generate_map.py        # Python script for map generation
 ```
 
+## Difficulty Progression
+
+| Level | Enemies | Bosses | Enemy Speed | Detection | Shoot Rate |
+|-------|---------|--------|-------------|-----------|------------|
+| 1     | 4       | 1      | Normal      | 300       | 1.5s       |
+| 2     | 8       | 1      | Normal      | 300       | 1.5s       |
+| 3     | 12      | 2      | Normal      | 300       | 1.5s       |
+| 4     | 14      | 2      | Fast        | 350       | 1.2s       |
+| 5     | 16      | 3      | Faster      | 400       | 1.0s       |
+| 6     | 18      | 3      | Very Fast   | 450       | 0.8s       |
+
 ## Enemy Types
 
 ### Regular Enemy
 - Patrols platforms
 - Chases player when in range
 - Shoots when close enough
-- Health: 30
+- Stats scale with level difficulty
 
 ### Boss
 - Larger size (3x scale)
 - Fires spread shot (3 bullets)
 - Enrage mode at low health (5 bullets, faster fire rate)
-- Health: 150
+- Health and damage increase in later levels
 
 ## Items
 

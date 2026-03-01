@@ -15,6 +15,7 @@ var player: Node2D = null
 var is_chasing: bool = false
 var can_shoot: bool = true
 var is_enraged: bool = false
+var is_dead: bool = false
 
 @onready var sprite: ColorRect = $Sprite
 @onready var ray_left: RayCast2D = $RayLeft
@@ -44,25 +45,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-	# Check if player is in range
+	# Check if player is in range for shooting only (no chasing)
 	if player:
 		var distance_to_player = global_position.distance_to(player.global_position)
-		is_chasing = distance_to_player < detection_range
 
 		# Shoot at player if in range
 		if distance_to_player < shoot_range and can_shoot:
 			shoot_at_player()
 
-	if is_chasing and player:
-		chase_player()
-	else:
-		patrol()
+	# Always patrol, never chase
+	patrol()
 
 	# Update sprite color based on state
 	if is_enraged:
 		sprite.color = Color(1.0, 0.1, 0.1, 1)  # Bright red when enraged
-	elif is_chasing:
-		sprite.color = Color(0.8, 0.2, 0.3, 1)  # Red when chasing
 	else:
 		sprite.color = Color(0.6, 0.15, 0.2, 1)  # Dark red when patrolling
 
@@ -156,6 +152,10 @@ func take_damage(amount: int) -> void:
 		die()
 
 func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
+
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
 	if game_manager:
 		game_manager.enemy_killed()

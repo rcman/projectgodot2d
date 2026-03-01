@@ -37,25 +37,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-	# Check if player is in range
+	# Check if player is in range for shooting only (no chasing)
 	if player:
 		var distance_to_player = global_position.distance_to(player.global_position)
-		is_chasing = distance_to_player < detection_range
 
 		# Shoot at player if in range
 		if distance_to_player < shoot_range and can_shoot:
 			shoot_at_player()
 
-	if is_chasing and player:
-		chase_player()
-	else:
-		patrol()
+	# Always patrol, never chase
+	patrol()
 
-	# Update sprite color based on state
-	if is_chasing:
-		sprite.color = Color(1.0, 0.2, 0.2, 1)  # Red when chasing
-	else:
-		sprite.color = Color(0.8, 0.2, 0.2, 1)  # Dark red when patrolling
+	# Sprite color
+	sprite.color = Color(0.8, 0.2, 0.2, 1)
 
 	move_and_slide()
 
