@@ -37,3 +37,26 @@ func show_interaction(text: String) -> void:
 
 func hide_interaction() -> void:
 	interaction_prompt.visible = false
+
+func update_keys(count: int) -> void:
+	key_label.text = "Keys: " + str(count)
+
+func show_message(text: String) -> void:
+	# Show a temporary message in the center of the screen
+	var message_label = Label.new()
+	message_label.text = text
+	message_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	message_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	message_label.add_theme_font_size_override("font_size", 24)
+	message_label.add_theme_color_override("font_color", Color(0.2, 1.0, 0.2))
+	message_label.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	message_label.add_theme_constant_override("outline_size", 3)
+	message_label.position = Vector2(400, 300)
+	message_label.size = Vector2(480, 50)
+	add_child(message_label)
+
+	# Fade out after 3 seconds
+	var tween = create_tween()
+	tween.tween_interval(2.0)
+	tween.tween_property(message_label, "modulate:a", 0.0, 1.0)
+	tween.tween_callback(message_label.queue_free)

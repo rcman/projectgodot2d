@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://key_pickup.gd" id="1_key"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_key"]
+size = Vector2(30, 30)
+
+[node name="KeyPickup" type="Area2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_key")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_key")
+
+[node name="KeyBase" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -5.0
+offset_right = 8.0
+offset_bottom = 10.0
+color = Color(0.9, 0.75, 0.1, 1)
+
+[node name="KeyTop" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -15.0
+offset_right = 6.0
+offset_bottom = -5.0
+color = Color(0.9, 0.75, 0.1, 1)
+
+[node name="KeyHole" type="ColorRect" parent="."]
+offset_left = -3.0
+offset_top = -12.0
+offset_right = 3.0
+offset_bottom = -8.0
+color = Color(0.3, 0.25, 0.05, 1)
+
+[node name="KeyTeeth1" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = 2.0
+offset_right = -5.0
+offset_bottom = 6.0
+color = Color(0.8, 0.65, 0.1, 1)
+
+[node name="KeyTeeth2" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = 7.0
+offset_right = -4.0
+offset_bottom = 10.0
+color = Color(0.8, 0.65, 0.1, 1)
+
+[node name="Glow" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -15.0
+offset_top = -22.0
+offset_right = 15.0
+offset_bottom = 18.0
+color = Color(1, 0.9, 0.3, 0.3)

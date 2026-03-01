@@ -161,12 +161,20 @@ func die() -> void:
 		game_manager.enemy_killed()
 		game_manager.add_score(500)  # Bonus points for boss
 
+	# Drop a key
+	drop_key()
+
 	# Death effect
 	var tween = create_tween()
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
 	tween.parallel().tween_property(self, "scale", Vector2(1.5, 1.5), 0.5)
 	await tween.finished
 	queue_free()
+
+func drop_key() -> void:
+	var key_pickup = preload("res://key_pickup.tscn").instantiate()
+	key_pickup.global_position = global_position + Vector2(0, 20)
+	get_tree().current_scene.call_deferred("add_child", key_pickup)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("take_damage"):

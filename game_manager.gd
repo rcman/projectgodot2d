@@ -24,10 +24,16 @@ func enemy_killed() -> void:
 	enemies_defeated += 1
 	add_score(100)
 
-	# Check if all enemies defeated
+	# Check if all enemies defeated - notify HUD but don't auto-complete
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	if enemies.size() <= 1:  # The one being killed
-		level_complete()
+		all_enemies_defeated()
+
+func all_enemies_defeated() -> void:
+	# Show message that exit is available
+	var hud = get_tree().get_first_node_in_group("hud")
+	if hud:
+		hud.show_message("All enemies defeated! Find the exit door!")
 
 func level_complete() -> void:
 	await get_tree().create_timer(1.0).timeout

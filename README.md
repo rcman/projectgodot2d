@@ -20,19 +20,18 @@ A 2D platformer game built with Godot 4.x featuring procedurally generated level
 |-----|--------|
 | A / Left Arrow | Move left |
 | D / Right Arrow | Move right |
-| W / Up Arrow | Climb up ladder |
+| W / Up Arrow | Jump / Climb up ladder |
 | S / Down Arrow | Climb down ladder |
-| Space | Jump |
-| Left Click | Shoot |
+| Space | Shoot |
 | E | Interact (open lockers, unlock doors) |
 
 ## How to Play
 
 1. Navigate through the factory using platforms and ladders
-2. Defeat all enemies to complete each level
-3. Search lockers for supplies (ammo, health, armor, keys)
-4. Use keys to unlock doors blocking your path
-5. Defeat the boss at the top of each level
+2. Defeat all enemies including the boss
+3. Search lockers for supplies (ammo, health, armor)
+4. Defeat the boss to get a key
+5. Use the key to unlock the exit door
 6. Progress through all 3 levels to win
 
 ## Project Structure

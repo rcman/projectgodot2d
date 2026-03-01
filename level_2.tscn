@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://game_manager.tscn" id="10_gamemanager"]
 [ext_resource type="PackedScene" path="res://boss.tscn" id="11_boss"]
 [ext_resource type="PackedScene" path="res://locked_door.tscn" id="12_door"]
+[ext_resource type="PackedScene" path="res://exit_door.tscn" id="13_exit"]
 
 [node name="Map" type="Node2D"]
 
@@ -150,3 +151,6 @@ ladder_height = 660.0
 [node name="Ladder_4" parent="Ladders" instance=ExtResource("4_ladder")]
 position = Vector2(450, 500)
 ladder_height = 360.0
+
+[node name="ExitDoor" parent="." instance=ExtResource("13_exit")]
+position = Vector2(800, 220)
